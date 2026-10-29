@@ -1,0 +1,888 @@
+<title>Ana Sofia Teixeira</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap');
+
+  /* Light-only, warm palette — the page keeps this look in any viewer theme. */
+  :root{
+    --cream:#FAF6ED;      /* lightest surface */
+    --beige:#F2EBDE;      /* alternating band */
+    --beige-2:#E9E0CE;    /* deepest band (footer) */
+    --ink:#2E2A24;
+    --ink-soft:#6B6459;
+    --ink-faint:#9C9384;
+    --hair:#DCD1BB;
+    --hair-soft:#E7DECB;
+    --gold:#B08D57;       /* accents */
+    --gold-deep:#7D6236;  /* icon strokes */
+    --gold-soft:#C9B189;  /* icon rings */
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Jost','Helvetica Neue',system-ui,sans-serif;
+    font-weight:300;
+    font-size:17px;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:.001ms !important;transition-duration:.001ms !important;}
+  }
+
+  img{max-width:100%;height:auto;display:block;}
+  a{color:inherit;}
+  a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
+    outline:1px solid var(--ink);
+    outline-offset:4px;
+  }
+
+  .wrap{
+    width:100%;
+    max-width:1280px;
+    margin:0 auto;
+    padding:0 clamp(1.5rem,5vw,3.5rem);
+  }
+
+  h1,h2,h3{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-weight:400;
+    text-wrap:balance;
+    margin:0;
+    letter-spacing:-0.005em;
+  }
+
+  /* label with the logo's sparkle motif */
+  .label{
+    display:flex;
+    align-items:center;
+    gap:0.6rem;
+    font-size:0.7rem;
+    font-weight:400;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin:0;
+  }
+  .label .spark{width:0.82rem;height:0.82rem;flex:none;color:var(--gold);}
+
+  /* ---------- header ---------- */
+  header.site{
+    position:sticky;
+    top:0;
+    z-index:40;
+    background:rgba(250,246,237,0.94);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--hair-soft);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:2rem;
+    max-width:1280px;
+    margin:0 auto;
+    padding:0.85rem clamp(1.5rem,5vw,3.5rem);
+  }
+  .brand{display:flex;align-items:center;gap:0.8rem;text-decoration:none;}
+  .brand img{width:2.4rem;height:auto;}
+  .brand span{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.22rem;
+    letter-spacing:0.06em;
+    white-space:nowrap;
+  }
+  .navlinks{display:flex;gap:2.4rem;list-style:none;margin:0;padding:0;}
+  .navlinks a{
+    font-size:0.76rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:var(--ink-soft);
+    padding-bottom:2px;
+    border-bottom:1px solid transparent;
+    transition:color .2s ease,border-color .2s ease;
+  }
+  .navlinks a:hover{color:var(--ink);border-bottom-color:var(--gold);}
+  /* o menu fica sempre na barra: em ecrã pequeno passa para uma segunda
+     linha, em vez de desaparecer */
+  @media (max-width:860px){
+    .nav{flex-wrap:wrap;justify-content:center;gap:0.55rem;padding-bottom:0.75rem;}
+    .brand{justify-content:center;}
+    .navlinks{
+      width:100%;
+      justify-content:space-between;
+      gap:0.4rem;
+      padding-top:0.6rem;
+      border-top:1px solid var(--hair-soft);
+    }
+    .navlinks a{font-size:0.68rem;letter-spacing:0.12em;}
+  }
+  @media (max-width:360px){ .navlinks a{font-size:0.63rem;letter-spacing:0.08em;} }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    padding:clamp(2.5rem,6vw,4.5rem) 0 clamp(3.5rem,8vw,6rem);
+    overflow:hidden;
+  }
+  .hero-deco{
+    position:absolute;
+    top:-9rem;right:-11rem;
+    width:34rem;height:34rem;
+    border:1px solid var(--gold-soft);
+    border-radius:50%;
+    pointer-events:none;
+    opacity:.55;
+  }
+  .hero-deco.two{
+    top:5rem;right:7rem;
+    width:15rem;height:15rem;
+    border-color:var(--hair-soft);
+  }
+  .hero-grid{
+    position:relative;
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:clamp(2.5rem,7vw,5.5rem);
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(2.3rem,4.6vw,3.7rem);
+    line-height:1.14;
+    font-weight:300;
+    margin:1.4rem 0 1.7rem;
+  }
+  .hero h1 em{font-style:italic;font-weight:300;letter-spacing:.012em;}
+  .hero .lede{
+    font-size:1.08rem;
+    color:var(--ink-soft);
+    max-width:38rem;
+    margin:0 0 2.2rem;
+  }
+  .hero-ctas{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;margin-bottom:2.5rem;}
+  .cta{
+    display:inline-flex;
+    align-items:center;
+    gap:0.6rem;
+    font-size:0.78rem;
+    font-weight:400;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    text-decoration:none;
+    padding:0.75rem 1.6rem;
+    border-radius:2px;
+    border:1px solid transparent;
+    transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease;
+  }
+  .cta svg{width:0.82rem;height:0.82rem;transition:transform .2s ease;}
+  .cta.primary{
+    background:var(--gold-deep);
+    color:var(--cream);
+    border-color:var(--gold-deep);
+    box-shadow:0 5px 12px -9px rgba(125,98,54,.55);
+  }
+  .cta.primary:hover{background:var(--ink);border-color:var(--ink);transform:translateY(-1px);}
+  .cta.primary:hover svg{transform:translateX(3px);}
+
+  .credential{
+    display:flex;
+    gap:0.85rem;
+    align-items:flex-start;
+    font-size:0.85rem;
+    color:var(--ink-faint);
+    line-height:1.85;
+    border-top:1px solid var(--hair-soft);
+    padding-top:1.3rem;
+    max-width:34rem;
+  }
+  .credential svg{width:1.2rem;height:1.2rem;flex:none;margin-top:0.45rem;color:var(--gold-deep);}
+
+  .portrait{position:relative;}
+  .portrait::before{
+    content:"";
+    position:absolute;
+    left:-1.1rem;bottom:-1.1rem;
+    right:1.1rem;top:1.1rem;
+    border:1px solid var(--gold);
+    opacity:.6;
+    pointer-events:none;
+  }
+  .portrait img{
+    position:relative;
+    width:100%;
+    filter:saturate(.95);
+  }
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .portrait{max-width:18rem;margin:0 auto;}
+    .hero-deco{display:none;}
+  }
+
+  /* ---------- sections ---------- */
+  section{padding:clamp(4rem,8vw,6.5rem) 0;}
+  section.tint{background:var(--beige);}
+  section.hair{border-top:1px solid var(--hair-soft);}
+  .section-head{max-width:42rem;margin-bottom:clamp(2.5rem,5vw,3.75rem);}
+  .section-head h2{
+    font-size:clamp(1.9rem,3.4vw,2.8rem);
+    font-weight:300;
+    line-height:1.2;
+    margin-top:0.9rem;
+  }
+
+  /* ---------- about ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.25fr 1fr;
+    gap:clamp(2.5rem,6vw,5rem);
+    align-items:start;
+  }
+  .about-grid p{margin:0 0 1.4rem;max-width:40rem;color:var(--ink-soft);}
+  blockquote.pull{
+    position:relative;
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-weight:400;
+    letter-spacing:.012em;
+    font-size:1.5rem;
+    line-height:1.4;
+    color:var(--ink);
+    margin:0;
+    padding-top:2.6rem;
+  }
+  blockquote.pull .qspark{
+    position:absolute;top:0;left:0;
+    width:1.35rem;height:1.35rem;color:var(--gold);
+  }
+  @media (max-width:820px){ .about-grid{grid-template-columns:1fr;} }
+
+  /* ---------- method ---------- */
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:clamp(1.5rem,3vw,2.5rem);
+  }
+  .step .ico{
+    width:4.1rem;height:4.1rem;
+    border:1px solid var(--gold-soft);
+    border-radius:50%;
+    background:var(--beige);
+    box-shadow:0 2px 8px rgba(125,98,54,0.07);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:1.3rem;
+    color:var(--gold-deep);
+  }
+  .step .ico svg{width:1.85rem;height:1.85rem;}
+  .step .n{
+    font-size:0.7rem;
+    letter-spacing:0.22em;
+    color:var(--ink-faint);
+    margin:0;
+  }
+  .step h3{font-size:1.3rem;font-weight:400;margin:0.35rem 0 0.6rem;}
+  .step p{color:var(--ink-soft);font-size:0.94rem;margin:0;line-height:1.7;}
+  @media (max-width:860px){ .steps{grid-template-columns:1fr 1fr;row-gap:2.5rem;} }
+
+  /* On a phone the four steps stop being columns and become a sequence:
+     icon beside the text, joined by a hairline, because the order is the point. */
+  @media (max-width:560px){
+    .steps{grid-template-columns:1fr;row-gap:0;}
+    .step{
+      position:relative;
+      display:grid;
+      grid-template-columns:4.1rem 1fr;
+      grid-template-rows:auto auto auto;
+      column-gap:1.15rem;
+      padding-bottom:2.1rem;
+    }
+    .step:last-child{padding-bottom:0;}
+    .step:not(:last-child)::before{
+      content:"";
+      position:absolute;
+      left:2.05rem;
+      top:4.65rem;
+      bottom:.35rem;
+      width:1px;
+      background:var(--hair);
+    }
+    .step .ico{grid-column:1;grid-row:1 / span 3;margin-bottom:0;}
+    .step .n{grid-column:2;grid-row:1;align-self:start;padding-top:.2rem;}
+    .step h3{grid-column:2;grid-row:2;margin:.1rem 0 .4rem;}
+    .step p{grid-column:2;grid-row:3;}
+  }
+
+  /* ---------- services ---------- */
+  .service-list{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:clamp(1.1rem,1.9vw,1.6rem);
+  }
+  .service{
+    flex:0 1 calc(33.333% - 1.1rem);
+    min-width:16rem;
+    max-width:27rem;
+    background:var(--cream);
+    border:1px solid var(--hair);
+    border-radius:3px;
+    padding:clamp(1.5rem,2.1vw,1.95rem);
+    display:flex;
+    flex-direction:column;
+  }
+  .service .ico{
+    width:3.9rem;height:3.9rem;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--gold-deep);
+    border:1px solid var(--gold-soft);
+    border-radius:50%;
+    background:var(--beige);
+    box-shadow:0 2px 8px rgba(125,98,54,0.07);
+    margin-bottom:1.15rem;
+    flex:none;
+  }
+  .service .ico svg{width:1.8rem;height:1.8rem;}
+  .service h3{font-size:1.22rem;font-weight:400;margin:0 0 0.5rem;line-height:1.3;}
+  /* reserve two title lines so the body copy starts on the same baseline across a row */
+  @media (min-width:621px){ .service h3{min-height:3.18rem;} }
+  .service p{color:var(--ink-soft);font-size:0.94rem;line-height:1.72;margin:0;}
+  @media (max-width:980px){ .service{flex-basis:calc(50% - 0.8rem);} }
+  @media (max-width:620px){ .service{flex-basis:100%;min-width:0;} }
+
+  /* ---------- contact ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:clamp(2.5rem,6vw,5rem);
+    align-items:start;
+  }
+  @media (max-width:860px){ .contact-grid{grid-template-columns:1fr;} }
+
+  .contact-intro{max-width:34rem;color:var(--ink-soft);margin:0 0 2.2rem;}
+
+  form{display:flex;flex-direction:column;gap:1.5rem;}
+  .field label{
+    display:block;
+    font-size:0.69rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin-bottom:0.45rem;
+  }
+  .field input,.field textarea{
+    width:100%;
+    font-family:'Jost',sans-serif;
+    font-weight:300;
+    font-size:1rem;
+    color:var(--ink);
+    background:var(--cream);
+    border:1px solid var(--hair);
+    border-radius:2px;
+    padding:0.65rem 0.85rem;
+    resize:vertical;
+    transition:border-color .2s ease;
+  }
+  .field textarea{min-height:6rem;line-height:1.7;}
+  .field input:focus,.field textarea:focus{border-color:var(--ink);outline-offset:3px;}
+
+  button.submit{
+    display:inline-flex;
+    align-items:center;
+    gap:0.6rem;
+    align-self:flex-start;
+    font-family:'Jost',sans-serif;
+    font-weight:400;
+    font-size:0.78rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--cream);
+    background:var(--gold-deep);
+    border:1px solid var(--gold-deep);
+    border-radius:2px;
+    padding:0.75rem 1.6rem;
+    cursor:pointer;
+    box-shadow:0 5px 12px -9px rgba(125,98,54,.55);
+    transition:background .2s ease,border-color .2s ease,transform .2s ease;
+  }
+  button.submit svg{width:0.82rem;height:0.82rem;transition:transform .2s ease;}
+  button.submit:hover{background:var(--ink);border-color:var(--ink);transform:translateY(-1px);}
+  button.submit:hover svg{transform:translateX(3px);}
+
+  .form-note{font-size:0.85rem;color:var(--ink-soft);min-height:1.3rem;margin:0;}
+  .botcheck{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;}
+  button.submit:disabled{opacity:.6;cursor:default;transform:none;}
+
+  .contact-card{
+    background:var(--cream);
+    border:1px solid var(--hair);
+    border-radius:3px;
+    padding:1.9rem;
+  }
+  .contact-card h3{
+    display:flex;align-items:center;gap:0.55rem;
+    font-size:0.69rem;
+    font-family:'Jost',sans-serif;
+    font-weight:400;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin-bottom:1.5rem;
+  }
+  .contact-card h3 svg{width:0.7rem;height:0.7rem;color:var(--gold);}
+  .contact-row{display:flex;gap:0.9rem;align-items:flex-start;margin-bottom:1.5rem;}
+  .contact-row:last-child{margin-bottom:0;}
+  .contact-row .ci{width:1.25rem;height:1.25rem;flex:none;margin-top:0.5rem;color:var(--gold-deep);}
+  .contact-row .k{
+    display:block;
+    font-size:0.66rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin-bottom:0.1rem;
+  }
+  .contact-row a{
+    text-decoration:none;
+    font-size:0.98rem;
+    border-bottom:1px solid var(--gold-soft);
+    transition:border-color .2s ease,color .2s ease;
+    overflow-wrap:break-word;
+  }
+  .contact-row a:hover{border-bottom-color:var(--gold-deep);color:var(--gold-deep);}
+  .contact-row a.go{
+    display:inline-flex;
+    align-items:center;
+    gap:0.4rem;
+    color:var(--gold-deep);
+    border-bottom-color:var(--gold-deep);
+  }
+  .contact-row a.go svg{width:0.72rem;height:0.72rem;transition:transform .2s ease;}
+  .contact-row a.go:hover{color:var(--ink);border-bottom-color:var(--ink);}
+  .contact-row a.go:hover svg{transform:translate(2px,-2px);}
+  /* esta linha não tem etiqueta por cima: alinha com o texto da de cima */
+  .contact-row:last-child .ci{margin-top:0.18rem;}
+
+
+  /* ---------- private pedidos panel ---------- */
+  .pedidos-panel{display:none;margin-top:3.5rem;padding-top:2rem;border-top:1px solid var(--hair);}
+  .pedidos-panel.show{display:block;}
+  .pedidos-panel h3{
+    font-family:'Jost',sans-serif;
+    font-size:0.69rem;font-weight:400;
+    letter-spacing:0.2em;text-transform:uppercase;
+    color:var(--ink-faint);margin-bottom:1.1rem;
+  }
+  .pedidos-panel ul{list-style:none;margin:0;padding:0;}
+  .pedidos-panel li{
+    padding:1.1rem 0;
+    border-top:1px solid var(--hair-soft);
+    font-size:0.93rem;
+    color:var(--ink-soft);
+  }
+  .pedidos-panel li strong{color:var(--ink);font-weight:400;}
+  .pedidos-panel time{
+    display:block;font-size:0.69rem;letter-spacing:0.12em;
+    color:var(--ink-faint);margin-top:0.45rem;
+  }
+  .pedidos-empty{color:var(--ink-faint);font-size:0.87rem;}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--hair);padding:3.25rem 0 3.5rem;background:var(--beige-2);}
+  .footer-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:1.8rem;
+  }
+  .footer-mark img{width:4.6rem;height:auto;opacity:.85;}
+  .footer-right{text-align:right;}
+  .footer-name{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.15rem;
+    letter-spacing:0.06em;
+    margin:0 0 0.35rem;
+  }
+  .footer-tag{
+    font-size:0.7rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin:0;
+  }
+  @media (max-width:520px){
+    .footer-inner{flex-direction:column;align-items:flex-start;}
+    .footer-right{text-align:left;}
+  }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-spark" viewBox="0 0 24 24">
+      <path d="M12 2.5 L13.35 10.65 L21.5 12 L13.35 13.35 L12 21.5 L10.65 13.35 L2.5 12 L10.65 10.65 Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="5.5" y1="18.5" x2="17.5" y2="6.5"/><polyline points="8.6,6.5 17.5,6.5 17.5,15.4"/>
+    </symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="3" y1="12" x2="20" y2="12"/><polyline points="14,6 20,12 14,18"/>
+    </symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M2.5 8.5 L12 4.5 L21.5 8.5 L12 12.5 Z"/><path d="M6.5 10.3 V15.5 C6.5 15.5 8.6 17.5 12 17.5 C15.4 17.5 17.5 15.5 17.5 15.5 V10.3"/><line x1="21.5" y1="8.5" x2="21.5" y2="14"/>
+    </symbol>
+    <symbol id="i-lens" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="10.5" cy="10.5" r="6.5"/><line x1="15.3" y1="15.3" x2="20.5" y2="20.5"/>
+    </symbol>
+    <symbol id="i-venn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.45">
+      <circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/>
+    </symbol>
+    <symbol id="i-compass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="8.8"/><polygon points="15.5,8.5 10.8,10.8 8.5,15.5 13.2,13.2"/>
+    </symbol>
+    <symbol id="i-path" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 18 C8 18 8 12 12 12 C16 12 16 6 20 6"/><circle cx="4" cy="18" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="20" cy="6" r="1.6"/>
+    </symbol>
+    <symbol id="i-shift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 12 A8 8 0 1 1 12 4"/><polyline points="12,1.4 12,6.6 16.4,4"/><circle cx="12" cy="12" r="2.2"/>
+    </symbol>
+    <symbol id="i-team" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="6.1" r="2.5"/><path d="M8.3 13.2a3.9 3.9 0 0 1 7.4 0"/>
+      <circle cx="4.6" cy="12.6" r="2.2"/><path d="M1.6 19a3.4 3.4 0 0 1 6 -2.2"/>
+      <circle cx="19.4" cy="12.6" r="2.2"/><path d="M22.4 19a3.4 3.4 0 0 0 -6 -2.2"/>
+    </symbol>
+    <symbol id="i-board" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="7.4" y="2.8" width="14.2" height="10.4" rx="1.1"/><polyline points="10.6,10.2 14,6.6 16.4,8.6 19,5.4"/>
+      <circle cx="3.4" cy="5.2" r="1.7"/><path d="M1.5 12.4V9.5a1.9 1.9 0 0 1 3.8 0v2.9"/>
+      <circle cx="8.4" cy="18" r="1.7"/><circle cx="15.2" cy="18" r="1.7"/>
+      <path d="M5.9 22.4a2.6 2.6 0 0 1 5 0M12.7 22.4a2.6 2.6 0 0 1 5 0"/>
+    </symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2.8" y="5.5" width="18.4" height="13" rx="1.5"/><polyline points="3.6,6.6 12,13 20.4,6.6"/>
+    </symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+      <rect x="3.2" y="3.2" width="17.6" height="17.6" rx="3"/><line x1="7.6" y1="10.2" x2="7.6" y2="17"/><circle cx="7.6" cy="6.9" r="0.65" fill="currentColor" stroke="none"/><path d="M11.6 17v-4.2c0-1.6 1.1-2.7 2.5-2.7 1.4 0 2.2 1.1 2.2 2.7V17"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="site">
+  <nav class="nav">
+    <a class="brand" href="#top">
+      <img src="__MARK__" alt="" width="240" height="205">
+      <span>Ana&nbsp;Sofia&nbsp;Teixeira</span>
+    </a>
+    <ul class="navlinks">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#metodo">Método</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="hero" aria-label="Apresentação">
+    <span class="hero-deco" aria-hidden="true"></span>
+    <span class="hero-deco two" aria-hidden="true"></span>
+    <div class="wrap hero-grid">
+      <div>
+        <p class="label"><svg class="spark" aria-hidden="true"><use href="#i-spark"/></svg>Consultoria estratégica</p>
+        <h1>Visão e pragmatismo para momentos de <em>mudança</em>.</h1>
+        <p class="lede">Sou a Ana Sofia Teixeira. Ajudo pessoas e organizações, em momentos de confusão, transição ou decisão, a organizar prioridades e a transformar essa situação num plano de ação concreto.</p>
+        <div class="hero-ctas">
+          <a class="cta primary" href="#contacto">Falar comigo<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+        <p class="credential">
+          <svg aria-hidden="true"><use href="#i-cap"/></svg>
+          <span>Economia, Gestão e Recursos Humanos — Universidade do Porto<br>Formação nacional e internacional em desenvolvimento humano</span>
+        </p>
+      </div>
+      <div class="portrait">
+        <img src="__PORTRAIT__" alt="Retrato de Ana Sofia Teixeira" width="720" height="952">
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre" class="tint" aria-labelledby="sobre-h">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="label"><svg class="spark" aria-hidden="true"><use href="#i-spark"/></svg>Apresentação</p>
+        <h2 id="sobre-h">Compreender o sentido do que faço</h2>
+      </div>
+      <div class="about-grid">
+        <div>
+          <p>Combinando visão e pragmatismo, sou consultora estratégica em processos de mudança, decisão e reorganização pessoal ou organizacional. Tenho formação em Economia, Gestão e Recursos Humanos pela Universidade do Porto, e formações nacionais e internacionais em desenvolvimento humano.</p>
+          <p>Para mim sempre foi importante compreender o sentido do que faço, e com a necessidade de ver aplicação, estrutura e consequência concreta disso, sigo o meu propósito estando agora mais perto de ti.</p>
+        </div>
+        <blockquote class="pull">
+          <svg class="qspark" aria-hidden="true"><use href="#i-spark"/></svg>
+          Não fui feita apenas para executar. Preciso de compreender o sistema, perceber o problema e participar na construção da solução.
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section id="metodo" aria-labelledby="metodo-h">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="label"><svg class="spark" aria-hidden="true"><use href="#i-spark"/></svg>Método</p>
+        <h2 id="metodo-h">A minha fórmula de trabalho</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="ico"><svg aria-hidden="true"><use href="#i-lens"/></svg></span>
+          <p class="n">01</p>
+          <h3>Diagnosticar</h3>
+          <p>Olhar para a situação real, sem filtros, para entender o verdadeiro ponto de partida.</p>
+        </div>
+        <div class="step">
+          <span class="ico"><svg aria-hidden="true"><use href="#i-venn"/></svg></span>
+          <p class="n">02</p>
+          <h3>Interpretar</h3>
+          <p>Dar sentido ao que foi identificado, cruzando dados, contexto e pessoas envolvidas.</p>
+        </div>
+        <div class="step">
+          <span class="ico"><svg aria-hidden="true"><use href="#i-compass"/></svg></span>
+          <p class="n">03</p>
+          <h3>Orientar</h3>
+          <p>Transformar essa leitura num plano de ação claro, com prioridades definidas.</p>
+        </div>
+        <div class="step">
+          <span class="ico"><svg aria-hidden="true"><use href="#i-path"/></svg></span>
+          <p class="n">04</p>
+          <h3>Acompanhar</h3>
+          <p>Estar presente durante a implementação, ajustando o caminho sempre que necessário.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos" class="tint" aria-labelledby="servicos-h">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="label"><svg class="spark" aria-hidden="true"><use href="#i-spark"/></svg>Serviços</p>
+        <h2 id="servicos-h">Como posso ajudar</h2>
+      </div>
+      <div class="service-list">
+        <div class="service">
+          <span class="ico"><svg aria-hidden="true"><use href="#i-shift"/></svg></span>
+          <div>
+            <h3>Gestão de Mudança</h3>
+            <p>Acompanho-te na gestão qualificada de um processo de mudança, seja ela pessoal, profissional ou organizacional. Num momento de transição ou de decisão, ajudo-te a organizar prioridades e a transformar a situação num plano de ação concreto.</p>
+          </div>
+        </div>
+        <div class="service">
+          <span class="ico"><svg aria-hidden="true"><use href="#i-team"/></svg></span>
+          <div>
+            <h3>Gestão e Desenvolvimento de Equipas</h3>
+            <p>Através de um programa de intervenção específico, trabalho com equipas e grupos, integrando os contributos individuais de forma coordenada no trabalho em equipa.</p>
+          </div>
+        </div>
+        <div class="service">
+          <span class="ico"><svg aria-hidden="true"><use href="#i-board"/></svg></span>
+          <div>
+            <h3>Workshops e Formações</h3>
+            <p>Desenho e dinamizo workshops e formações à medida, para organizações e para grupos de crianças, jovens ou adultos. Parto das necessidades concretas de cada contexto, para que cada participante reconheça o seu propósito pessoal e profissional e para consolidar uma cultura de conhecimento, inovação e melhoria contínua.</p>
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="hair" aria-labelledby="contacto-h">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="label"><svg class="spark" aria-hidden="true"><use href="#i-spark"/></svg>Contacto</p>
+        <h2 id="contacto-h">Vamos conversar</h2>
+      </div>
+      <div class="contact-grid">
+        <div>
+          <p class="contact-intro">Conta-me o que está a acontecer. Respondo com calma, para entender bem o que precisas antes de avançarmos.</p>
+          <form id="contact-form" novalidate>
+            <div class="field">
+              <label for="f-nome">Nome</label>
+              <input id="f-nome" name="nome" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="f-email">Email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="f-mensagem">Mensagem</label>
+              <textarea id="f-mensagem" name="mensagem" required></textarea>
+            </div>
+            <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button class="submit" type="submit">Enviar pedido<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            <p class="form-note" id="form-note" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+        <div class="contact-card">
+          <h3><svg aria-hidden="true"><use href="#i-spark"/></svg>Contacto direto</h3>
+          <div class="contact-row">
+            <svg class="ci" aria-hidden="true"><use href="#i-mail"/></svg>
+            <span>
+              <span class="k">Email</span>
+              <a href="mailto:asofiateixeira.business@gmail.com">asofiateixeira.business<wbr>@gmail.com</a>
+            </span>
+          </div>
+          <div class="contact-row">
+            <svg class="ci" aria-hidden="true"><use href="#i-linkedin"/></svg>
+            <span>
+              <a class="go" href="https://www.linkedin.com/in/ana-sofia-teixeira-25937011a" target="_blank" rel="noopener noreferrer">LinkedIn<svg aria-hidden="true"><use href="#i-ext"/></svg></a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pedidos-panel" id="pedidos-panel">
+        <h3>Pedidos recebidos — vista privada</h3>
+        <ul id="pedidos-lista"></ul>
+        <p class="pedidos-empty" id="pedidos-empty">Ainda não há pedidos registados.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span class="footer-mark"><img src="__MARKFULL__" alt="" width="280" height="277"></span>
+    <div class="footer-right">
+      <p class="footer-name">Ana Sofia Teixeira</p>
+      <p class="footer-tag">Diagnosticar · Interpretar · Orientar · Acompanhar</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  // ------------------------------------------------------------------
+  // CHAVE DO FORMULÁRIO
+  // Obtém-se em https://web3forms.com — escreve-se o email que recebe os
+  // pedidos (asofiateixeira.business@gmail.com) e a chave chega por email.
+  // Não é preciso criar conta. Cola-a aqui entre as plicas.
+  // Enquanto estiver vazia, o botão abre o email de quem está a visitar.
+  // ------------------------------------------------------------------
+  var ACCESS_KEY = '';
+
+  var DESTINO = 'asofiateixeira.business@gmail.com';
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+    });
+  }
+
+  /* preview-only:start */
+  try{
+    if (new URLSearchParams(location.search).get('pedidos') === '1') {
+      document.getElementById('pedidos-panel').classList.add('show');
+    }
+  }catch(e){}
+  var lista = document.getElementById('pedidos-lista');
+  var empty = document.getElementById('pedidos-empty');
+  /* preview-only:end */
+
+  var form = document.getElementById('contact-form');
+  var note = document.getElementById('form-note');
+  var button = form.querySelector('button.submit');
+
+  function setNote(text){ note.textContent = text; }
+
+  function fallbackMailto(nome, email, mensagem){
+    var subject = encodeURIComponent('Contacto via site: ' + nome);
+    var body = encodeURIComponent('Nome: ' + nome + '\nEmail: ' + email + '\n\n' + mensagem);
+    window.location.href = 'mailto:' + DESTINO + '?subject=' + subject + '&body=' + body;
+    setNote('A abrir o teu email para enviares a mensagem diretamente.');
+  }
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+
+    var nome = form.nome.value.trim();
+    var email = form.email.value.trim();
+    var mensagem = form.mensagem.value.trim();
+
+    if(!nome || !email || !mensagem){
+      setNote('Preenche todos os campos, por favor.');
+      return;
+    }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){
+      setNote('Confirma o email, parece estar incompleto.');
+      form.email.focus();
+      return;
+    }
+    // armadilha para robôs: um humano nunca preenche este campo
+    if(form.botcheck && form.botcheck.checked){ return; }
+
+    button.disabled = true;
+    setNote('A enviar…');
+
+    /* preview-only:start */
+    var ns = null;
+    try{
+      if (window.claude && typeof window.claude.use === 'function') {
+        ns = await window.claude.use('artifact');
+      }
+    }catch(e){ ns = null; }
+    if (ns) {
+      try{
+        await ns.sync(function(){
+          if (empty && empty.parentNode) empty.remove();
+          var li = document.createElement('li');
+          var when = new Date().toLocaleString('pt-PT');
+          li.innerHTML = '<strong>' + escapeHtml(nome) + '</strong>, ' + escapeHtml(email) +
+            '<br>' + escapeHtml(mensagem) + '<time>' + escapeHtml(when) + '</time>';
+          lista.appendChild(li);
+        });
+        setNote('Pedido enviado. Obrigada, respondo em breve.');
+        form.reset();
+      }catch(err){
+        fallbackMailto(nome, email, mensagem);
+        form.reset();
+      }
+      button.disabled = false;
+      return;
+    }
+    /* preview-only:end */
+
+    if (ACCESS_KEY) {
+      try{
+        var resposta = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            access_key: ACCESS_KEY,
+            subject: 'Contacto via site: ' + nome,
+            from_name: 'Site Ana Sofia Teixeira',
+            name: nome,
+            email: email,
+            message: mensagem
+          })
+        });
+        var dados = await resposta.json();
+        if (resposta.ok && dados.success) {
+          setNote('Pedido enviado. Obrigada, respondo em breve.');
+          form.reset();
+          button.disabled = false;
+          return;
+        }
+      }catch(err){ /* sem rede ou serviço em baixo: segue para o email */ }
+    }
+
+    fallbackMailto(nome, email, mensagem);
+    form.reset();
+    button.disabled = false;
+  });
+})();
+</script>
